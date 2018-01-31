@@ -1,9 +1,0 @@
-C:\Users\Administrator\Desktop\扫雷\BoomShakalaka\BoomShakalaka\bin\Release\BoomShakalaka.exe.config
-C:\Users\Administrator\Desktop\扫雷\BoomShakalaka\BoomShakalaka\bin\Release\BoomShakalaka.exe
-C:\Users\Administrator\Desktop\扫雷\BoomShakalaka\BoomShakalaka\bin\Release\BoomShakalaka.pdb
-C:\Users\Administrator\Desktop\扫雷\BoomShakalaka\BoomShakalaka\obj\Release\BoomShakalaka.Form1.resources
-C:\Users\Administrator\Desktop\扫雷\BoomShakalaka\BoomShakalaka\obj\Release\BoomShakalaka.Properties.Resources.resources
-C:\Users\Administrator\Desktop\扫雷\BoomShakalaka\BoomShakalaka\obj\Release\BoomShakalaka.WinForm.resources
-C:\Users\Administrator\Desktop\扫雷\BoomShakalaka\BoomShakalaka\obj\Release\BoomShakalaka.csproj.GenerateResource.Cache
-C:\Users\Administrator\Desktop\扫雷\BoomShakalaka\BoomShakalaka\obj\Release\BoomShakalaka.exe
-C:\Users\Administrator\Desktop\扫雷\BoomShakalaka\BoomShakalaka\obj\Release\BoomShakalaka.pdb

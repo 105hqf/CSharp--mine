@@ -47,7 +47,7 @@ namespace BoomShakalaka
         private bool first = true;
         private int lostFlag = 0;
 
-        
+        private SetMine setmine;
 
         CountClass Hourtime = new CountClass(0, 0, 0, 0);
         public int[,] visited = new int[40,16];
@@ -157,59 +157,60 @@ namespace BoomShakalaka
             switch (level1)
             {
                 case 1:
-                    //***************************************/
-                    //                                       /
-                    //                                       /
-                    //                                       /
-                    //                                       /
-                    //***************************************/
-                    this.label1.Visible = true;
-                    this.label2.Visible = true;
-                    this.label6.Visible = true;
-                    this.重新开始游戏ToolStripMenuItem.Enabled = true;
-                    //////////
-                    this.panel1.Visible = true;
-                    level = 0;
-                    booma.boomcount = 10;
-                    Get();
+                        //***************************************/
+                        //                                       /
+                        //                                       /
+                        //                                       /
+                        //                                       /
+                        //***************************************/
+                        this.label1.Visible = true;
+                        this.label2.Visible = true;
+                        this.label6.Visible = true;
+                        this.重新开始游戏ToolStripMenuItem.Enabled = true;
+                        //////////
+                        this.panel1.Visible = true;
+                        level = 0;
+                        booma.boomcount = 10;
+                        Get();
 
-                    //this.label4.Text = booma.boomcount.ToString();
-                    pictureBox9.Image = imageList1.Images[booma.boomcount % 10];
-                    pictureBox8.Image = imageList1.Images[booma.boomcount / 10];
-                    //this.label3.Text = (booma.boomcount - booma.check).ToString();
-                    ////选择高级后，将Form窗体扩大，panel控件也扩大
-                    row = 9;
-                    col = 9;
-                    this.Size = new Size(Ox, Oy);
-                    this.panel1.Size = new Size(9 * 25, 9 * 25);
-                    //////窗体的修改
+                        //this.label4.Text = booma.boomcount.ToString();
+                        pictureBox9.Image = imageList1.Images[booma.boomcount % 10];
+                        pictureBox8.Image = imageList1.Images[booma.boomcount / 10];
+                        //this.label3.Text = (booma.boomcount - booma.check).ToString();
+                        ////选择高级后，将Form窗体扩大，panel控件也扩大
+                        row = 9;
+                        col = 9;
+                        this.Size = new Size(Ox, Oy);
+                        this.panel1.Size = new Size(9 * 25, 9 * 25);
+                        //////窗体的修改
 
-                    ////
-                    lostFlag = 0;
-                    timer1.Enabled = false;
-                    Hourtime = new CountClass(0, 0, 0, 0);
-                    this.pictureBox1.Image = imageList1.Images[0];
-                    this.pictureBox2.Image = imageList1.Images[0];
-                    this.pictureBox3.Image = imageList1.Images[0];
-                    this.pictureBox4.Image = imageList1.Images[0];
-                    this.pictureBox5.Image = imageList1.Images[10];
-                    // label3.Text = time.ToString();
-                    if (this.panel1.Visible == true)
-                    {
-                        this.panel1.Controls.Clear();
-                        setBg();
-                    }
-                    for (int i = 0; i < row; i++)
-                    {
-                        for (int j = 0; j < col; j++)
-                            visited[i, j] = 0;
-                    }
-                    WinFlag = 0;
-                    FlagCount = 0;
-                    pictureBox7.Image = imageList1.Images[0];
-                    pictureBox6.Image = imageList1.Images[0];
-                    first = true;
-                    break;
+                        ////
+                        lostFlag = 0;
+                        timer1.Enabled = false;
+                        Hourtime = new CountClass(0, 0, 0, 0);
+                        this.pictureBox1.Image = imageList1.Images[0];
+                        this.pictureBox2.Image = imageList1.Images[0];
+                        this.pictureBox3.Image = imageList1.Images[0];
+                        this.pictureBox4.Image = imageList1.Images[0];
+                        this.pictureBox5.Image = imageList1.Images[10];
+                        // label3.Text = time.ToString();
+                        if (this.panel1.Visible == true)
+                        {
+                            this.panel1.Controls.Clear();
+                            setBg();
+                        }
+                        for (int i = 0; i < row; i++)
+                        {
+                            for (int j = 0; j < col; j++)
+                                visited[i, j] = 0;
+                        }
+                        WinFlag = 0;
+                        FlagCount = 0;
+                        pictureBox7.Image = imageList1.Images[0];
+                        pictureBox6.Image = imageList1.Images[0];
+                        first = true;
+                        setmine = new SetMine(booma.boomcount,row,col);
+                        break;
                 case 2:
                         this.label1.Visible = true;
                         this.label2.Visible = true;
@@ -254,6 +255,7 @@ namespace BoomShakalaka
                         pictureBox7.Image = imageList1.Images[0];
                         pictureBox6.Image = imageList1.Images[0];
                         first = true;
+                        setmine = new SetMine(booma.boomcount, row, col);
                         break;
 
                 case 3:
@@ -300,6 +302,7 @@ namespace BoomShakalaka
                         pictureBox7.Image = imageList1.Images[0];
                         pictureBox6.Image = imageList1.Images[0];
                         first = true;
+                        setmine = new SetMine(booma.boomcount, row, col);
                         break;
                 default :
                     MessageBox.Show("程序出错！请联系开发者！","错误！",MessageBoxButtons.OK,MessageBoxIcon.Error);
@@ -314,24 +317,13 @@ namespace BoomShakalaka
         #region 安排雷区
         public void set()
         {
-            int boomcount = 0;
-            int locationX,locationY;
-            board = new int[40, 16];
-            ///简单的难度,默认安置10个雷
-            while (boomcount < booma.boomcount)
+            MyStack[] stackfinal = new MyStack[100];
+            stackfinal = setmine.setBoom(firstX, firstY);
+            board = new int[25, 16];
+            for (int i = 0; stackfinal[i]!=null; i++)
             {
-                ///random函数随机生成雷的位置
-                Random random = new Random();
-                locationX = random.Next(0, row);
-                Thread.Sleep(100);
-                locationY = random.Next(0, col);
-                if ((locationX >= firstX - 1 && locationX <= firstX + 1) && (locationY >= firstY - 1 && locationY <= firstY + 1) ) 
-                    continue;
-                if (board[locationX, locationY] == -1) continue;
-                    board[locationX, locationY] = -1;
-                    boomcount++;
+                board[stackfinal[i].Locationx, stackfinal[i].Locationy] = -1;
             }
-           // this.label4.Text = boomcount.ToString();
 
             ////////遍历数组的各个点，如果该点不是雷点，将该点的周边的雷数量显示
             for (int i = 0; i < row; i++)
@@ -355,37 +347,18 @@ namespace BoomShakalaka
 
         } 
            #endregion
-        /// <summary>
-        /// 尝试更加快速的布雷算法
-        /// </summary>
-        public void alth()
-        {
-             /////尝试一：事先将随机数储存入数组中保存
-                                 
-        }
+
 
         #region 安排困难的雷区
         public void setD()
-        {
-            int boomcount = 0;
-            int locationX, locationY;
-            board = new int[40, 16];
-            ///简单的难度,默认安置10个雷
-            while (boomcount < booma.boomcount)
+        {    
+            MyStack[] stackfinal = new MyStack[100]; 
+            stackfinal = setmine.setBoom(firstX, firstY); 
+            board = new int[25, 16];
+            for (int i = 0; i < 99; i++)
             {
-                ///random函数随机生成雷的位置
-                Random random = new Random();
-                locationX = random.Next(0, row);
-                //Thread.Sleep();
-                locationY = random.Next(0, col);
-                if ((locationX >= firstX - 1 && locationX <= firstX + 1) && (locationY >= firstY - 1 && locationY <= firstY + 1))
-                    continue;
-                if (board[locationX, locationY] == -1) continue;
-                board[locationX, locationY] = -1;
-                boomcount++;
+                board[stackfinal[i].Locationx, stackfinal[i].Locationy] = -1;
             }
-            //this.label4.Text = boomcount.ToString();
-
             ////////遍历数组的各个点，如果该点不是雷点，将该点的周边的雷数量显示
             for (int i = 0; i < row; i++)
                 for (int j = 0; j < col; j++)
@@ -405,12 +378,6 @@ namespace BoomShakalaka
 
                     }
                 }
-
-
-
-
-
-
         }
         #endregion
 
@@ -431,10 +398,10 @@ namespace BoomShakalaka
                     sign[i, j] = 3;
                     label[i, j].TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
                     label[i, j].Name = i.ToString() + "哈" + j.ToString();
-                        label[i, j].MouseDown += new MouseEventHandler(label_MouseDown);
-                        label[i, j].MouseMove += new MouseEventHandler(label_MouseMove);
-                        label[i, j].MouseLeave += new System.EventHandler(label_MouseLeave);
-                        label[i, j].MouseUp += new MouseEventHandler(label_MouseUp);
+                    label[i, j].MouseDown += new MouseEventHandler(label_MouseDown);
+                    label[i, j].MouseMove += new MouseEventHandler(label_MouseMove);
+                    label[i, j].MouseLeave += new System.EventHandler(label_MouseLeave);
+                    label[i, j].MouseUp += new MouseEventHandler(label_MouseUp);
                     //label.Image = Image.FromFile("stone.png");
                     this.panel1.Controls.Add(label[i, j]);
                     label[i, j].Image = imageList2.Images[9];
@@ -448,9 +415,9 @@ namespace BoomShakalaka
         #region 排雷事件
         private void lbl_Click(object sender, EventArgs e)
         {
-            int front2 = 0;
+
             Label lbl = sender as Label;
-            
+            int front2 = 0;
             String[] str = new String[2];
             
             //翻牌后计数加1；
@@ -479,7 +446,8 @@ namespace BoomShakalaka
                     sign[mystack[front2].Locationx, mystack[front2].Locationy] = 4;
                     if (board[mystack[front2].Locationx, mystack[front2].Locationy] != 0)
                     {
-                        label[mystack[front2].Locationx, mystack[front2].Locationy].Image = imageList2.Images[board[mystack[front2].Locationx, mystack[front2].Locationy]];
+                        label[mystack[front2].Locationx, mystack[front2].Locationy].Image 
+                            = imageList2.Images[board[mystack[front2].Locationx, mystack[front2].Locationy]];
                         sign[mystack[front2].Locationx, mystack[front2].Locationy] = 4;
                     }
                     front2++;
@@ -512,13 +480,14 @@ namespace BoomShakalaka
                             {
                                 if (board[i, j] == -1)
                                 {
-                                    if (sign[i, j] == 1)
+                                    if (board[i, j] == -1)
+                                    {
+                                        label[i, j].Image = Image.FromFile(@"Image\boom1.png");
+                                    }
+                                    else if (board[i, j] != -1 && sign[i, j] == 1)
                                     {
                                         label[i, j].Image = Image.FromFile(@"Image\Boom.png");
                                     }
-                                    else
-                                        label[i, j].Image = Image.FromFile(@"Image\boom1.png");
-
                                 }
                                 //lbl.Click += new EventHandler(this.lbl1_Click);
                             }
@@ -530,6 +499,8 @@ namespace BoomShakalaka
                     //////无雷区自动翻开
                     if (board[firstX, firstY] == 0)
                     {
+                        //SpreadTmer.Enabled = true;
+                        //SpreadTmer.Interval = 100;
 
                         Auto(firstX, firstY);
                         while (front2 < rear)
@@ -540,8 +511,10 @@ namespace BoomShakalaka
                             {
                                 label[mystack[front2].Locationx, mystack[front2].Locationy].Image = imageList2.Images[board[mystack[front2].Locationx, mystack[front2].Locationy]];
                                 sign[mystack[front2].Locationx, mystack[front2].Locationy] = 4;
+                                //Thread.Sleep(1000);
                             }
                             front2++;
+                            //Thread.Sleep(1000);
                         }
                         front = -1;
                         front1 = -1;
@@ -562,18 +535,20 @@ namespace BoomShakalaka
             x = int.Parse(str[0]);
             z = int.Parse(str[1]);
             y = sign[x, z];
-            if(lostFlag==0)
-                for (int i = -1; i < 2; i++)
-                    for (int j = -1; j < 2; j++)
-                    {
-                        if (x + i > -1 && x + i < row && z + j > -1 && z + j < col && sign[x + i, z + j] == 3)
+            ////如果当前点击的格子显示的数字不是空格，则跳动
+                if (lostFlag == 0)
+                    for (int i = -1; i < 2; i++)
+                        for (int j = -1; j < 2; j++)
                         {
-                            label[x + i, z + j].Image = imageList2.Images[9];
+                            if (x + i > -1 && x + i < row && z + j > -1 && z + j < col && sign[x + i, z + j] == 3)
+                            {
+                                label[x + i, z + j].Image = imageList2.Images[9];
+                            }
                         }
-                    }
         }
         private void label_MouseDown(object sender, MouseEventArgs e)
         {
+            ////插旗胜负的判断
             if (lostFlag == 0)
             {
                 int front2 = 0;
@@ -682,16 +657,44 @@ namespace BoomShakalaka
                                     }
                             }
                             ///如果雷没有找对，则将其九宫格闪动一下
-                            else
+                            else if(board[x,z]!=0)
                             {
                                 for (int i = -1; i < 2; i++)
                                     for (int j = -1; j < 2; j++)
                                     {
-                                        if (x + i > -1 && x + i < row && z + j > -1 && z + j < col && sign[x + i, z + j] == 3)
+                                        if (x + i > -1 && x + i < row && z + j > -1 && z + j < col)
                                         {
+                                            if (sign[x + i, z + j] == 1 && board[x + i, z + j] != -1)
+                                            {
+                                                lostFlag = -1;
+                                                timer1.Enabled = false;
+                                                Hourtime = new CountClass(0, 0, 0, 0);
+                                                // label3.Text = "";
+                                                label[x + i, z + j].Image = Image.FromFile(@"Image\boom1.png");
+                                                MessageBox.Show("雷标记错误");
+                                                for (int k = 0; k < row; k++)
+                                                {
+                                                    for (int l = 0; l < col; l++)
+                                                    {
+                                                        if (board[k, l] == -1)
+                                                        {
+                                                              label[k, l].Image = Image.FromFile(@"Image\boom1.png");
+                                                        }
+                                                        else if (board[k, l] != -1 && sign[k, l] == 1)
+                                                        {
+                                                            label[k, l].Image = Image.FromFile(@"Image\Boom.png");
+                                                        }
+                                                        //lbl.Click += new EventHandler(this.lbl1_Click);
+                                                    }
+                                                }
+                                                break;
+                                            }
+                                            ////显示空白
+                                            else if(sign[x + i, z + j] == 3&&lostFlag!=-1)
                                             label[x + i, z + j].Image = imageList2.Images[0];
                                         }
                                     }
+                                ////显示外壳
                                 lbl.MouseUp += new MouseEventHandler(label_MouseUp);
                             }
                         }
@@ -896,7 +899,6 @@ namespace BoomShakalaka
 
         }
         #endregion 
-
 
 
     }

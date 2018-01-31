@@ -9,7 +9,7 @@ namespace BoomShakalaka
     /// <summary>
     /// 定义一个栈
     /// </summary>
-    class MyStack
+    public class MyStack
     {
         private int locationx;
 

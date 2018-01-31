@@ -87,7 +87,7 @@
             this.下一位玩家开始ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(406, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(406, 25);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -99,7 +99,7 @@
             this.选择难度ToolStripMenuItem,
             this.重新开始游戏ToolStripMenuItem});
             this.新游戏ToolStripMenuItem.Name = "新游戏ToolStripMenuItem";
-            this.新游戏ToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
+            this.新游戏ToolStripMenuItem.Size = new System.Drawing.Size(80, 21);
             this.新游戏ToolStripMenuItem.Text = "新游戏      ";
             this.新游戏ToolStripMenuItem.Click += new System.EventHandler(this.新游戏ToolStripMenuItem_Click);
             // 
@@ -110,48 +110,48 @@
             this.中级ToolStripMenuItem1,
             this.高级ToolStripMenuItem});
             this.选择难度ToolStripMenuItem.Name = "选择难度ToolStripMenuItem";
-            this.选择难度ToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.选择难度ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.选择难度ToolStripMenuItem.Text = "选择难度";
             // 
             // 中级ToolStripMenuItem
             // 
             this.中级ToolStripMenuItem.Name = "中级ToolStripMenuItem";
-            this.中级ToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
+            this.中级ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.中级ToolStripMenuItem.Text = "初级";
             this.中级ToolStripMenuItem.Click += new System.EventHandler(this.中级ToolStripMenuItem_Click);
             // 
             // 中级ToolStripMenuItem1
             // 
             this.中级ToolStripMenuItem1.Name = "中级ToolStripMenuItem1";
-            this.中级ToolStripMenuItem1.Size = new System.Drawing.Size(106, 22);
+            this.中级ToolStripMenuItem1.Size = new System.Drawing.Size(100, 22);
             this.中级ToolStripMenuItem1.Text = "中级";
             this.中级ToolStripMenuItem1.Click += new System.EventHandler(this.中级ToolStripMenuItem1_Click);
             // 
             // 高级ToolStripMenuItem
             // 
             this.高级ToolStripMenuItem.Name = "高级ToolStripMenuItem";
-            this.高级ToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
+            this.高级ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.高级ToolStripMenuItem.Text = "高级";
             this.高级ToolStripMenuItem.Click += new System.EventHandler(this.高级ToolStripMenuItem_Click);
             // 
             // 重新开始游戏ToolStripMenuItem
             // 
             this.重新开始游戏ToolStripMenuItem.Name = "重新开始游戏ToolStripMenuItem";
-            this.重新开始游戏ToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.重新开始游戏ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.重新开始游戏ToolStripMenuItem.Text = "重新开始游戏";
             this.重新开始游戏ToolStripMenuItem.Click += new System.EventHandler(this.重新开始游戏ToolStripMenuItem_Click);
             // 
             // 帮助ToolStripMenuItem
             // 
             this.帮助ToolStripMenuItem.Name = "帮助ToolStripMenuItem";
-            this.帮助ToolStripMenuItem.Size = new System.Drawing.Size(96, 20);
+            this.帮助ToolStripMenuItem.Size = new System.Drawing.Size(96, 21);
             this.帮助ToolStripMenuItem.Text = "对战模式       ";
             this.帮助ToolStripMenuItem.Click += new System.EventHandler(this.帮助ToolStripMenuItem_Click);
             // 
             // 下一位玩家开始ToolStripMenuItem
             // 
             this.下一位玩家开始ToolStripMenuItem.Name = "下一位玩家开始ToolStripMenuItem";
-            this.下一位玩家开始ToolStripMenuItem.Size = new System.Drawing.Size(104, 20);
+            this.下一位玩家开始ToolStripMenuItem.Size = new System.Drawing.Size(104, 21);
             this.下一位玩家开始ToolStripMenuItem.Text = "下一位玩家开始";
             // 
             // timer1
@@ -249,25 +249,25 @@
             this.显示主页ToolStripMenuItem,
             this.退出游戏ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(131, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(125, 70);
             // 
             // 帮助ToolStripMenuItem1
             // 
             this.帮助ToolStripMenuItem1.Name = "帮助ToolStripMenuItem1";
-            this.帮助ToolStripMenuItem1.Size = new System.Drawing.Size(130, 22);
+            this.帮助ToolStripMenuItem1.Size = new System.Drawing.Size(124, 22);
             this.帮助ToolStripMenuItem1.Text = "帮助";
             // 
             // 显示主页ToolStripMenuItem
             // 
             this.显示主页ToolStripMenuItem.Name = "显示主页ToolStripMenuItem";
-            this.显示主页ToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.显示主页ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.显示主页ToolStripMenuItem.Text = "显示主页";
             this.显示主页ToolStripMenuItem.Click += new System.EventHandler(this.显示主页ToolStripMenuItem_Click);
             // 
             // 退出游戏ToolStripMenuItem
             // 
             this.退出游戏ToolStripMenuItem.Name = "退出游戏ToolStripMenuItem";
-            this.退出游戏ToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.退出游戏ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.退出游戏ToolStripMenuItem.Text = "退出游戏";
             this.退出游戏ToolStripMenuItem.Click += new System.EventHandler(this.退出游戏ToolStripMenuItem_Click);
             // 
@@ -387,7 +387,7 @@
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = " 扫雷（全模式)";
+            this.Text = " 扫雷";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);

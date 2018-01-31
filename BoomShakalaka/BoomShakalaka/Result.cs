@@ -183,7 +183,6 @@ namespace BoomShakalaka
             Game temp=new Game(0,0);
             Game temp1 = new Game(0, 0);
             int count = 0;
-            int number=0;
             switch (level)
             {
                 case 0:
@@ -243,8 +242,9 @@ namespace BoomShakalaka
                             game[listBox1.Items.Count].Second = int.Parse(split[1]);
                             result = listBox1.Items.Count + 1;
                         }
-                        for (int num = 0; num <listBox1.Items.Count+1; num++)
+                        for (int num = 0; num <listBox1.Items.Count; num++)
                         {
+                            resultArray[num] = "";
                             resultArray[num] = game[num].Minute+"分"+game[num].Second;
                         }
 
